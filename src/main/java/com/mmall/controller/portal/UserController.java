@@ -1,6 +1,7 @@
 package com.mmall.controller.portal;
 
 import com.mmall.common.Const;
+import com.mmall.common.RedisShardedPool;
 import com.mmall.common.ResponseCode;
 import com.mmall.common.ServerResponse;
 import com.mmall.dao.UserMapper;
@@ -44,8 +45,6 @@ public class UserController {
 //            session.setAttribute(Const.CURRENT_USER, response.getData());
 
             CookieUtil.writeLoginToken(httpServletResponse, session.getId());
-//
-//            CookieUtil.delLoginToken(httpServletRequest, httpServletResponse);
             RedisPoolUtil.setEx(session.getId(), JsonUtil.obj2String(response.getData()), Const.RedisCacheExtime.REDIS_SESSION_EXTIME);
 
         }
