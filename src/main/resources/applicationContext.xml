@@ -17,6 +17,10 @@
     <!--<context:annotation-config/>-->
     <aop:aspectj-autoproxy/>
 
+    <!-- 二期新增spring schedule的时候新增的 -->
+    <context:property-placeholder location="classpath:datasource.properties" />
+    <task:annotation-driven/>
+
     <import resource="applicationContext-spring-session.xml"/>
     <import resource="applicationContext-datasource.xml"/>
 
